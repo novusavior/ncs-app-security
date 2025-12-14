@@ -1,11 +1,10 @@
 # CVE-2025-55182 (React2Shell)
 
-## Introduction
-**Distibution**:
+## team
 1) Sergey Razmakhov: researcher, programmer
 2) Sergei Glazov: tester, assistance, documentarian
 
-**Our goal**: We want to show you that even very popular frameworks have their own unexpected behaviors that can cause problems, such as the example we are going to provide. In our case, this is an attack that was rated as 10/10 dangerous. This will allow hackers to execute the code remotely and eventually they can even use it to do reverse shell.
+**goal**: we want to show you that even very popular frameworks have their own unexpected behaviors that can cause problems, such as the example we are going to provide. 
 
 ## i. attack surface and scenarios description
 applications using affected versions of the React Server Components implementation may process untrusted input in a way that allows an attacker to perform remote code execution:
@@ -45,7 +44,7 @@ demo: [Google Drive](https://drive.google.com/file/d/1Smbl1fkY7TfKVKP7mB-8Cri9c2
 1. deploy sample Next.js application with `docker compose up -d`.
 2. prepare malicious payload with `id` command to be executed and appropriate headers.
 3. make HTTP request to Next.js server using Burp, curl, etc.
-4. check the `x-action-redirect` header in the response, which contains the execution result of the id command:
+4. check the `x-action-redirect` header in the response, which contains the execution result of the `id` command:
 
 ![](assets/burp-response.png)
 
@@ -158,6 +157,4 @@ this vulnerability is extremely easy to reproduce. it only requires making a POS
 
 however, actual technical details and the internal reasons behind why this vulnerability is possible are complex (at least for a person that is not much into web) and requires decent amount of time to investigate.
 
-This is indeed a very interesting exploit. And i can only guess how people have found it out. Albeit I didn't get the knack for hacking, it was incredibly interesting for us to investigate.
-
-Thank you very much for your attention!
+thank you very much for your attention!
