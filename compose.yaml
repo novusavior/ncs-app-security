@@ -1,0 +1,27 @@
+services:
+  web:
+    image: vulhub/nextjs:15.5.6
+    ports:
+      - "3000:3000"
+    networks:
+      - exploit-network
+  
+  attacker:
+    image: alpine/curl:latest
+    depends_on:
+      - web
+    networks:
+      - exploit-network
+    volumes:
+      - ./exploit.sh:/exploit.sh
+    command: >
+      sh -c "
+        echo 'Waiting for web service to be ready...' &&
+        sleep 10 &&
+        echo 'Running exploit...' &&
+        cd / && sh /exploit.sh
+      "
+
+networks:
+  exploit-network:
+    driver: bridge
